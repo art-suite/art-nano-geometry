@@ -1,0 +1,9 @@
+import &StandardImport
+
+suite: ->
+  benchmark "ArtAtomic.point()", -> point()
+
+  artAtomicPoint1 = point 1 2
+  artAtomicPoint2 = point 3 4
+
+  benchmark "artAtomicPoint1.add artAtomicPoint2", -> artAtomicPoint1.add artAtomicPoint2

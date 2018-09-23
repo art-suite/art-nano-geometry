@@ -1,0 +1,42 @@
+import &StandardImport
+
+suite: ->
+  inlineAddReturningNewObject = (this_x, this_y, b_x, b_y) ->
+    x = this_x + b_x
+    y = this_y + b_y
+    {x, y}
+
+  returnPointObj = x: 0.0, y: 0.0
+  inlineAddReturningReuseObject = (this_x, this_y, b_x, b_y) ->
+    returnPointObj.x = this_x + b_x
+    returnPointObj.y = this_y + b_y
+    returnPointObj
+
+  returnPoint = new Point
+  inlineAddReturningReusePoint = (this_x, this_y, b_x, b_y) ->
+    returnPoint.x = this_x + b_x
+    returnPoint.y = this_y + b_y
+    returnPoint
+
+  inlineAddReturningNewArrary = (this_x, this_y, b_x, b_y) ->
+    x = this_x + b_x
+    y = this_y + b_y
+    [x, y]
+
+  buffer = new Float64Array 2
+  inlineAddReturningNewArraryBuffer = (this_x, this_y, b_x, b_y) ->
+    buffer[0] = this_x + b_x
+    buffer[1] = this_y + b_y
+    null
+
+  inlineAddReturningJustX = (this_x, this_y, b_x, b_y) ->
+    x = this_x + b_x
+    y = this_y + b_y
+    x
+
+  benchmark "inlineAddReturningNewObject",        -> {x, y} = inlineAddReturningNewObject 0.1, 0.1, 1.1, 1.1; null
+  benchmark "inlineAddReturningNewArrary",        -> [x, y] = inlineAddReturningNewArrary 0.1, 0.1, 1.1, 1.1; null
+  benchmark "inlineAddReturningReuseObject",      -> {x, y} = inlineAddReturningReuseObject     0.1, 0.1, 1.1, 1.1; null
+  benchmark "inlineAddReturningReusePoint",       -> {x, y} = inlineAddReturningReusePoint 0.1, 0.1, 1.1, 1.1; null
+  benchmark "inlineAddReturningNewArraryBuffer",  -> inlineAddReturningNewArraryBuffer 0.1, 0.1, 1.1, 1.1; x = buffer[0]; y = buffer[1]; null
+  benchmark "inlineAddReturningJustX",            -> x = inlineAddReturningJustX 0.1, 0.1, 1.1, 1.1; null

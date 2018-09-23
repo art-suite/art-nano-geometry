@@ -1,0 +1,8 @@
+import &StandardImport
+
+suite: ->
+  artAtomicPoint = point 1 2
+  artAtomicMatrix = matrix()
+
+  benchmark "ArtAtomic.matrix()", -> matrix()
+  benchmark 'artAtomicMatrix.transform artAtomicPoint' -> artAtomicMatrix.transform artAtomicPoint
