@@ -4,3 +4,5 @@ class NanoRectangle extends &NanoAtomicBase
   @createAtomic
     defaults: 0 0 100 100
     fields:   :x :y :w :h
+
+  # @nanoRectangleIntersection: (x_1, y_1, w_1, h_1, x_2, y_2, w_2, h_2) ->

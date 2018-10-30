@@ -24,7 +24,7 @@ class NanoMatrix extends &NanoAtomicBase
     fields:   :xx :yy :xy :yx :x1 :y1
     defaults: 1   1   0   0   0   0
 
-  @nanoMatrixFromArtAtomicMatrix: ({sx, sy, shx, shy, tx, ty}) ->
+  @nanoMatrixFromAtomicMatrix: ({sx, sy, shx, shy, tx, ty}) ->
     @nanoMatrixWithReusableResult sx, sy, shx, shy, tx, ty
 
   @nanoMatrixTransform: (xx, yy, xy, yx, x1, y1, x, y) ->
